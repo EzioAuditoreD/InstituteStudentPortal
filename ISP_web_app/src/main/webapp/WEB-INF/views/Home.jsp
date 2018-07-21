@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ISP</title>
+<title>Home</title>
 </head>
 <body>
-<p>WELCOME TO ISP</p>
+<h1>Welcome to ISP</h1>
 </body>
 </html>
