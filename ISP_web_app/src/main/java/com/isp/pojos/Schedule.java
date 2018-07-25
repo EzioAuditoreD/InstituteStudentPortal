@@ -13,6 +13,11 @@ public class Schedule {
 	private int weekNo;
 	private String data;
 	
+	public Schedule() {
+		super();
+		System.out.println("In Schedule default ctor");
+	}
+
 	public Schedule(Integer courseID, int weekNo, String data) {
 		super();
 		this.courseID = courseID;
@@ -26,7 +31,7 @@ public class Schedule {
 		return scheduleID;
 	}
 
-	public void setScheduleID(Integer scheduleID) {
+	public void setScheduleID(Integer scheduleID) {   
 		this.scheduleID = scheduleID;
 	}
 

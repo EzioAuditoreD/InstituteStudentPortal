@@ -17,6 +17,10 @@ public class Attendance {
 	private int totalLectures;
 	private List<Student> students;
 	
+	public Attendance() {
+		super();
+		System.out.println("In Attendance default ctor");
+	}
 	public Attendance(Integer studentId, Integer moduleId, int attended, int totalLectures, List<Student> students) {
 		super();
 		this.studentId = studentId;

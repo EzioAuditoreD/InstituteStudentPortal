@@ -25,9 +25,11 @@ public class Student {
 	private String fathersContact;
 	private byte[] photo;
 	private String qualification;
-	
-	
-	
+		
+	public Student() {
+		super();
+		System.out.println("In student default ctor");
+	}
 	public Student(String name, String address, String contactNo, char gender, int batch, int courseID, Date dob,
 			String fathersName, String fathersContact, byte[] photo, String qualification) {
 		super();

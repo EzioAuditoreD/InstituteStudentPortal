@@ -15,6 +15,21 @@ public class Notice {
 	private Date createdOn;
 	private String data;
 	private Integer courseID;
+
+	public Notice() {
+		super();
+		System.out.println("In Notice default ctor");
+	}
+
+
+	public Notice(String title, Date createdOn, String data, Integer courseID) {
+		super();
+		this.title = title;
+		this.createdOn = createdOn;
+		this.data = data;
+		this.courseID = courseID;
+	}
+
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -55,14 +70,6 @@ public class Notice {
 	}
 
 	public void setCourseID(Integer courseID) {
-		this.courseID = courseID;
-	}
-
-	public Notice(String title, Date createdOn, String data, Integer courseID) {
-		super();
-		this.title = title;
-		this.createdOn = createdOn;
-		this.data = data;
 		this.courseID = courseID;
 	}
 

@@ -18,6 +18,11 @@ public class Course {
 	private List<Module> modules;
 	private List<Student> students;
 	
+	public Course() {
+		super();
+		System.out.println("In course default ctor");
+	}
+
 	public Course(String name, String description) {
 		super();
 		this.name = name;

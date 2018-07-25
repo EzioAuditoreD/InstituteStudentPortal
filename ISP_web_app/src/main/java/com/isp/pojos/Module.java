@@ -22,6 +22,10 @@ public class Module {
 	private int cceeTotal;
 	private int internal;
 	
+	public Module() {
+		super();
+		System.out.println("In Module default ctor");
+	}
 	public Module(String moduleName, Integer courseID, int hours, String facultyName, String description,
 			int practicalTotal, int cceeTotal, int internal) {
 		super();

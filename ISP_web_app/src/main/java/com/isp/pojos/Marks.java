@@ -19,6 +19,11 @@ public class Marks {
 	private Date createdOn;
 	private Date updatedOn;
 	
+	public Marks() {
+		super();
+		System.out.println("In Marks default ctor");
+	}
+
 	public Marks(Integer studentID, Integer moduleID, int practicalMarks, int internalMarks, int cceeMarks,
 			Date createdOn, Date updatedOn) {
 		super();
