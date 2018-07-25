@@ -1,34 +1,27 @@
 package com.isp.pojos;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Attendance {
 
 	private Integer id;
-	private Integer studentId;
-	private Integer moduleId; 
 	private int attended;
 	private int totalLectures;
-	private List<Student> students;
+
+	private Student studentID;
+	private Module moduleID; 
 	
 	public Attendance() {
 		super();
 		System.out.println("In Attendance default ctor");
 	}
-	public Attendance(Integer studentId, Integer moduleId, int attended, int totalLectures, List<Student> students) {
-		super();
-		this.studentId = studentId;
-		this.moduleId = moduleId;
-		this.attended = attended;
-		this.totalLectures = totalLectures;
-		this.students = students;
-	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getId() {
@@ -37,22 +30,6 @@ public class Attendance {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getStudentId() {
-		return studentId;
-	}
-
-	public void setStudentId(Integer studentId) {
-		this.studentId = studentId;
-	}
-
-	public Integer getModuleId() {
-		return moduleId;
-	}
-
-	public void setModuleId(Integer moduleId) {
-		this.moduleId = moduleId;
 	}
 
 	public int getAttended() {
@@ -71,14 +48,30 @@ public class Attendance {
 		this.totalLectures = totalLectures;
 	}
 
-	public List<Student> getStudents() {
-		return students;
+	@ManyToOne
+	@JoinColumn(name="StudenID_FK")
+	public Student getStudentID() {
+		return studentID;
 	}
 
-	public void setStudents(List<Student> students) {
-		this.students = students;
+	public void setStudentID(Student studentID) {
+		this.studentID = studentID;
 	}
-	
-	
+
+	@ManyToOne
+	@JoinColumn(name="ModuleID_FK")
+	public Module getModuleID() {
+		return moduleID;
+	}
+
+	public void setModuleID(Module moduleID) {
+		this.moduleID = moduleID;
+	}
+
+	@Override
+	public String toString() {
+		return "Attendance [attended=" + attended + ", totalLectures=" + totalLectures + ", studentID=" + studentID
+				+ ", moduleID=" + moduleID + "]";
+	}
 	
 }

@@ -1,11 +1,17 @@
 package com.isp.pojos;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +20,6 @@ public class Module {
 
 	private Integer moduleID;
 	private String moduleName;
-	private Integer courseID;
 	private int hours;
 	private String facultyName;
 	private String description;
@@ -22,22 +27,15 @@ public class Module {
 	private int cceeTotal;
 	private int internal;
 	
+	private Course courseID;
+	private List<Marks> marks = new ArrayList<>();
+	private List<Attendance> attendance = new ArrayList<>();
+	
 	public Module() {
 		super();
 		System.out.println("In Module default ctor");
 	}
-	public Module(String moduleName, Integer courseID, int hours, String facultyName, String description,
-			int practicalTotal, int cceeTotal, int internal) {
-		super();
-		this.moduleName = moduleName;
-		this.courseID = courseID;
-		this.hours = hours;
-		this.facultyName = facultyName;
-		this.description = description;
-		this.practicalTotal = practicalTotal;
-		this.cceeTotal = cceeTotal;
-		this.internal = internal;
-	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getModuleID() {
@@ -54,14 +52,6 @@ public class Module {
 
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
-	}
-
-	public Integer getCourseID() {
-		return courseID;
-	}
-
-	public void setCourseID(Integer courseID) {
-		this.courseID = courseID;
 	}
 
 	public int getHours() {
@@ -110,6 +100,34 @@ public class Module {
 
 	public void setInternal(int internal) {
 		this.internal = internal;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="CourseID_FK")
+	public Course getCourseID() {
+		return courseID;
+	}
+
+	public void setCourseID(Course courseID) {
+		this.courseID = courseID;
+	}
+
+	@OneToMany(mappedBy="moduleID", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	public List<Marks> getMarks() {
+		return marks;
+	}
+
+	public void setMarks(List<Marks> marks) {
+		this.marks = marks;
+	}
+
+	@OneToMany(mappedBy="moduleID", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	public List<Attendance> getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(List<Attendance> attendance) {
+		this.attendance = attendance;
 	}
 
 	@Override

@@ -1,13 +1,23 @@
 package com.isp.pojos;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Students")
@@ -19,32 +29,22 @@ public class Student {
 	private String contactNo;
 	private char gender;
 	private int batch;
-	private int courseID;
 	private Date dob;
 	private String fathersName;
 	private String fathersContact;
 	private byte[] photo;
 	private String qualification;
-		
+	private boolean verified;
+	
+	private Course courseID;
+	private List<Marks> marks = new ArrayList<>();
+	private List<Attendance> attendance = new ArrayList<>();
+	
 	public Student() {
 		super();
 		System.out.println("In student default ctor");
 	}
-	public Student(String name, String address, String contactNo, char gender, int batch, int courseID, Date dob,
-			String fathersName, String fathersContact, byte[] photo, String qualification) {
-		super();
-		this.name = name;
-		Address = address;
-		this.contactNo = contactNo;
-		this.gender = gender;
-		this.batch = batch;
-		this.courseID = courseID;
-		this.dob = dob;
-		this.fathersName = fathersName;
-		this.fathersContact = fathersContact;
-		this.photo = photo;
-		this.qualification = qualification;
-	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getId() {
@@ -83,12 +83,8 @@ public class Student {
 	public void setBatch(int batch) {
 		this.batch = batch;
 	}
-	public int getCourseID() {
-		return courseID;
-	}
-	public void setCourseID(int courseID) {
-		this.courseID = courseID;
-	}
+
+	@Temporal(TemporalType.DATE)
 	public Date getDob() {
 		return dob;
 	}
@@ -119,6 +115,42 @@ public class Student {
 	public void setQualification(String qualification) {
 		this.qualification = qualification;
 	}
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="CourseID_FK")
+	public Course getCourseID() {
+		return courseID;
+	}
+
+	public void setCourseID(Course course) {
+		this.courseID = course;
+	}
+	
+	@OneToMany(mappedBy="studentID",cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	public List<Marks> getMarks() {
+		return marks;
+	}
+
+	public void setMarks(List<Marks> marks) {
+		this.marks = marks;
+	}
+
+	@OneToMany(mappedBy="studentID", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	public List<Attendance> getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(List<Attendance> attendance) {
+		this.attendance = attendance;
+	}
+
 	@Override
 	public String toString() {
 		return "Student [name=" + name + ", Address=" + Address + ", contactNo=" + contactNo + ", gender=" + gender

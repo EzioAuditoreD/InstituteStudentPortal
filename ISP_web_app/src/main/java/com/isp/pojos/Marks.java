@@ -6,34 +6,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Marks {
 
 	private Integer marksID;
-	private Integer studentID;
-	private Integer moduleID;
 	private int practicalMarks;
 	private int internalMarks;
 	private int cceeMarks;
 	private Date createdOn;
 	private Date updatedOn;
 	
+	private Student studentID;
+	private Module moduleID;
+	
 	public Marks() {
 		super();
 		System.out.println("In Marks default ctor");
-	}
-
-	public Marks(Integer studentID, Integer moduleID, int practicalMarks, int internalMarks, int cceeMarks,
-			Date createdOn, Date updatedOn) {
-		super();
-		this.studentID = studentID;
-		this.moduleID = moduleID;
-		this.practicalMarks = practicalMarks;
-		this.internalMarks = internalMarks;
-		this.cceeMarks = cceeMarks;
-		this.createdOn = createdOn;
-		this.updatedOn = updatedOn;
 	}
 
 	@Id
@@ -44,22 +37,6 @@ public class Marks {
 
 	public void setMarksID(Integer marksID) {
 		this.marksID = marksID;
-	}
-
-	public Integer getStudentID() {
-		return studentID;
-	}
-
-	public void setStudentID(Integer studentID) {
-		this.studentID = studentID;
-	}
-
-	public Integer getModuleID() {
-		return moduleID;
-	}
-
-	public void setModuleID(Integer moduleID) {
-		this.moduleID = moduleID;
 	}
 
 	public int getPracticalMarks() {
@@ -85,7 +62,7 @@ public class Marks {
 	public void setCceeMarks(int cceeMarks) {
 		this.cceeMarks = cceeMarks;
 	}
-
+	@Temporal(TemporalType.DATE)
 	public Date getCreatedOn() {
 		return createdOn;
 	}
@@ -93,13 +70,40 @@ public class Marks {
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
-
+	@Temporal(TemporalType.DATE)
 	public Date getUpdatedOn() {
 		return updatedOn;
 	}
 
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="StudentID_FK")
+	public Student getStudentID() {
+		return studentID;
+	}
+
+	public void setStudentID(Student studentID) {
+		this.studentID = studentID;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="ModuleID_FK")
+	public Module getModuleID() {
+		return moduleID;
+	}
+
+	public void setModuleID(Module moduleID) {
+		this.moduleID = moduleID;
+	}
+
+	@Override
+	public String toString() {
+		return "Marks [practicalMarks=" + practicalMarks + ", internalMarks=" + internalMarks + ", cceeMarks="
+				+ cceeMarks + ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + ", studentID=" + studentID
+				+ ", moduleID=" + moduleID + "]";
 	}
 	
 	
