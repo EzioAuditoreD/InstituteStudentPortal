@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,8 @@ public class Student {
 
 	private Integer id;
 	private String name;
+	private String username;
+	private String password;
 	private String Address;
 	private String contactNo;
 	private char gender;
@@ -34,6 +37,7 @@ public class Student {
 	private byte[] photo;
 	private String qualification;
 	private boolean verified;
+	private boolean active;
 	
 	private Course courseID;
 	private List<Marks> marks = new ArrayList<>();
@@ -82,7 +86,6 @@ public class Student {
 	public void setBatch(int batch) {
 		this.batch = batch;
 	}
-
 	@Temporal(TemporalType.DATE)
 	public Date getDob() {
 		return dob;
@@ -117,9 +120,27 @@ public class Student {
 	public boolean isVerified() {
 		return verified;
 	}
-
 	public void setVerified(boolean verified) {
 		this.verified = verified;
+	}
+	@Column(unique=true)
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@ManyToOne

@@ -30,6 +30,18 @@ public class Course {
 		super();
 		System.out.println("In course default ctor");
 	}
+	
+	public Course(String name, String description, String coordinatorName, List<Module> modules, List<Student> students,
+			List<Schedule> schedules, List<Notice> notices) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.coordinatorName = coordinatorName;
+		this.modules = modules;
+		this.students = students;
+		this.schedules = schedules;
+		this.notices = notices;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
