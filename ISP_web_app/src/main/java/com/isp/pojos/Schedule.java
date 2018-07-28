@@ -2,6 +2,7 @@ package com.isp.pojos;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +39,7 @@ public class Schedule {
 	public void setScheduleID(Integer scheduleID) {   
 		this.scheduleID = scheduleID;
 	}
-
+	@Column(nullable=false)
 	public int getWeekNo() {
 		return weekNo;
 	}
@@ -55,6 +56,7 @@ public class Schedule {
 		this.data = data;
 	}
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	public Date getCreatedOn() {
 		return createdOn;
 	}
@@ -63,6 +65,7 @@ public class Schedule {
 		this.createdOn = createdOn;
 	}
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	public Date getUpdatedOn() {
 		return updatedOn;
 	}
@@ -85,7 +88,4 @@ public class Schedule {
 	public String toString() {
 		return "Schedule [courseID=" + courseID + ", weekNo=" + weekNo + ", data=" + data + "]";
 	}
-
-	
-
 }

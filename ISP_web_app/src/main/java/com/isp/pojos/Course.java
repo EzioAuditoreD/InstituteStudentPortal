@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +31,18 @@ public class Course {
 		super();
 		System.out.println("In course default ctor");
 	}
+	
+	public Course(String name, String description, String coordinatorName, List<Module> modules, List<Student> students,
+			List<Schedule> schedules, List<Notice> notices) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.coordinatorName = coordinatorName;
+		this.modules = modules;
+		this.students = students;
+		this.schedules = schedules;
+		this.notices = notices;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -40,7 +53,7 @@ public class Course {
 	public void setCourseID(Integer courseID) {
 		this.courseID = courseID;
 	}
-
+	@Column(nullable=false)
 	public String getName() {
 		return name;
 	}
@@ -56,7 +69,7 @@ public class Course {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	@Column(nullable=false)
 	public String getCoordinatorName() {
 		return coordinatorName;
 	}
@@ -105,7 +118,4 @@ public class Course {
 	public String toString() {
 		return "Course [name=" + name + ", description=" + description + "]";
 	}
-	
-	
-
 }
