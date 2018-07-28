@@ -26,7 +26,7 @@ public class StudentDaoImpl implements StudentDao {
 	
 	@Override
 	public Student validateStudent(String usn, String pwd) {
-		String jpql="select s from Student s where s.username= :username and s.password = :password";
+		String jpql="select s from Student s where s.username= :username and s.password = :password and active = true";
 		Session hs = sf.getCurrentSession();
 		Student s;
 		try {
