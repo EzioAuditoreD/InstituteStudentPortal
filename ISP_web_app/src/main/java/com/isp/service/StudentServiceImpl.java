@@ -2,6 +2,7 @@ package com.isp.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.isp.dao.StudentDao;
@@ -14,11 +15,12 @@ import com.isp.utils.IspUtils;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-	
+	@Autowired
 	private StudentDao dao;
 	@Override
 	public Student validateStudent(String em, String pass) {
-		return dao.validateStudent(em, IspUtils.passwordEncoder().encode(pass));
+		//return dao.validateStudent(em, IspUtils.passwordEncoder().encode(pass));
+		return dao.validateStudent(em, pass);
 	}
 
 	@Override

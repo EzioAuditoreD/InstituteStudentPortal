@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ISP</title>
+<title>Home</title>
 </head>
 <body>
-<form action="login" method="post">
-	UserName:<input type="text" name="user"><br>
-	Password:<input type="password" name="pass"><br>
-	<input type="submit" value="Submit">
-</form>
+<h1>Welcome to ISP</h1><br>
+<a href="student/login">Login</a>
 </body>
 </html>

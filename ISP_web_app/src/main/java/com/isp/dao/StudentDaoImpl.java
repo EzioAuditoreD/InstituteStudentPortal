@@ -19,6 +19,7 @@ import com.isp.pojos.Student;
 
 @Repository
 @Transactional
+@SuppressWarnings("unused")
 public class StudentDaoImpl implements StudentDao {
 
 	@Autowired

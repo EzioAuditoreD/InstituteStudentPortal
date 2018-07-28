@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home</title>
+<title>ISP</title>
 </head>
 <body>
-<h1>Welcome to ISP</h1>
+<form action="login" method="post">
+${requestScope.loginMessage}<br>
+	UserName:<input type="text" name="username"><br>
+	Password:<input type="password" name="password"><br>
+	<input type="submit" value="Submit">
+</form>
 </body>
 </html>

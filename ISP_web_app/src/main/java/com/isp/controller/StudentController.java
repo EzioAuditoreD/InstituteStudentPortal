@@ -1,6 +1,6 @@
-package controller;
+package com.isp.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +17,7 @@ import com.isp.pojos.Marks;
 import com.isp.pojos.Notice;
 import com.isp.pojos.Schedule;
 import com.isp.pojos.Student;
+import com.isp.service.StudentService;
 
 @Controller
 @RequestMapping("/student")
@@ -25,7 +26,8 @@ public class StudentController {
 	@Autowired
 	StudentService service;
 	
-	public StudentController() {
+	public StudentController() 
+	{
 		System.out.println("Created Student Controller");
 	}
 	
@@ -40,34 +42,36 @@ public class StudentController {
 			@RequestParam String username,@RequestParam String password,HttpSession hs)
 	{
 		Student s = null;
-		s = service.validate(username,password);
-		if(s==null)
+		System.out.println(username+password);
+		try
+		{
+			s = service.validateStudent(username,password);
+			hs.setAttribute("studentID", s.getId());
+			hs.setAttribute("studentCourseID", s.getCourseID().getCourseID());
+			return "redirect:/student/profile";
+		}
+		catch(RuntimeException e)
 		{
 			map.addAttribute("loginMessage", "Invalid Username or Password");
 			return "/student/login";
-		}
-		else
-		{
-			hs.setAttribute("studentID", s.getId());
-			hs.setAttribute("studentCourseID", s.getCourseID());
-			return "redirect:/student/profile";
 		}
 	}
 	
 	@GetMapping("/profile")
 	public String showProfile(Model map,HttpSession hs)
 	{
-		Student s = service.getDetails((Integer)hs.getAttribute("studentID"));
-		map.addAttribute("studentDetails", s);
+		Student s = service.getStudentDetails((Integer)hs.getAttribute("studentID"));
+		map.addAttribute("studentDetails",s);
 		return "/student/profile";
 	}
 	
 	@GetMapping("/notices")
 	public String showNotices(Model map, HttpSession hs)
 	{
+		System.out.println(hs.getAttribute("studentCourseID"));
 		Integer courseID = (Integer)hs.getAttribute("studentCourseID");
-		ArrayList<Notice> notices =service.getNotices(courseID);
-		map.addAttribute("notices",notices );
+		List<Notice> notices = service.getNotices(courseID);
+		map.addAttribute("notices",notices);
 		return "/student/notices";
 	}
 	
@@ -75,8 +79,8 @@ public class StudentController {
 	public String showSchedules(Model map, HttpSession hs)
 	{
 		Integer courseID = (Integer)hs.getAttribute("studentCourseID");
-		ArrayList<Schedule> schedules =service.getSchedules(courseID);
-		map.addAttribute("schedules",schedules );
+		List<Schedule> schedules = service.getSchedules(courseID);
+		map.addAttribute("schedules",schedules);
 		return "/student/schedules";
 	}
 	
@@ -84,8 +88,8 @@ public class StudentController {
 	public String showMarks(Model map, HttpSession hs)
 	{
 		Integer studentID = (Integer)hs.getAttribute("studentID");
-		ArrayList<Marks> marks =service.getMarks(studentID);
-		map.addAttribute("marks",marks );
+		List<Marks> marks =service.getMarks(studentID);
+		map.addAttribute("marks",marks);
 		return "/student/marks";
 	}
 	
@@ -93,8 +97,8 @@ public class StudentController {
 	public String showAttendance(Model map, HttpSession hs)
 	{
 		Integer studentID = (Integer)hs.getAttribute("studentID");
-		ArrayList<Attendance> attendances =service.getAttendance(studentID);
-		map.addAttribute("attendances",attendances );
+		List<Attendance> attendances =service.getAttendance(studentID);
+		map.addAttribute("attendances",attendances);
 		return "/student/attendance";
 	}
 	
