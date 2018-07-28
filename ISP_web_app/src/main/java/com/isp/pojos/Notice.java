@@ -2,6 +2,7 @@ package com.isp.pojos;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,7 +38,7 @@ public class Notice {
 	public void setNoticeID(Integer noticeID) {
 		this.noticeID = noticeID;
 	}
-
+	@Column(nullable=false)
 	public String getTitle() {
 		return title;
 	}
@@ -46,6 +47,7 @@ public class Notice {
 		this.title = title;
 	}
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	public Date getCreatedOn() {
 		return createdOn;
 	}
@@ -54,6 +56,7 @@ public class Notice {
 		this.createdOn = createdOn;
 	}
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	public Date getUpdatedOn() {
 		return updatedOn;
 	}

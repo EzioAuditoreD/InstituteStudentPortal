@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class Module {
 	public void setModuleID(Integer moduleID) {
 		this.moduleID = moduleID;
 	}
-
+	@Column(nullable=false, unique=true)
 	public String getModuleName() {
 		return moduleName;
 	}
@@ -53,7 +54,7 @@ public class Module {
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
 	}
-
+	@Column(nullable=false)
 	public int getHours() {
 		return hours;
 	}
@@ -61,7 +62,7 @@ public class Module {
 	public void setHours(int hours) {
 		this.hours = hours;
 	}
-
+	@Column(nullable=false)
 	public String getFacultyName() {
 		return facultyName;
 	}
@@ -77,7 +78,7 @@ public class Module {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	@Column(nullable=false)
 	public int getPracticalTotal() {
 		return practicalTotal;
 	}
@@ -85,7 +86,7 @@ public class Module {
 	public void setPracticalTotal(int practicalTotal) {
 		this.practicalTotal = practicalTotal;
 	}
-
+	@Column(nullable=false)
 	public int getCceeTotal() {
 		return cceeTotal;
 	}
@@ -93,7 +94,7 @@ public class Module {
 	public void setCceeTotal(int cceeTotal) {
 		this.cceeTotal = cceeTotal;
 	}
-
+	@Column(nullable=false)
 	public int getInternal() {
 		return internal;
 	}

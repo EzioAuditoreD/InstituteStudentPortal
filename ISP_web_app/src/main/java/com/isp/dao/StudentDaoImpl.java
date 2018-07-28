@@ -1,13 +1,14 @@
 package com.isp.dao;
 
+
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.isp.pojos.Attendance;
 import com.isp.pojos.Course;
@@ -16,17 +17,24 @@ import com.isp.pojos.Notice;
 import com.isp.pojos.Schedule;
 import com.isp.pojos.Student;
 
-
 @Repository
+@Transactional
 public class StudentDaoImpl implements StudentDao {
 
 	@Autowired
 	private SessionFactory sf;
-
+	
 	@Override
 	public Student validateStudent(String usn, String pwd) {
 		String jpql="select s from Student s where s.username= :username and s.password = :password";
-		return sf.getCurrentSession().createQuery(jpql, Student.class).setParameter("username", usn).setParameter("password", pwd).getSingleResult();
+		Session hs = sf.getCurrentSession();
+		Student s;
+		try {
+			s = hs.createQuery(jpql, Student.class).setParameter("username", usn).setParameter("password", pwd).getSingleResult();
+		} catch (HibernateException e) {
+			throw e;
+		}
+		return s;
 	}
 
 	@Override
@@ -34,14 +42,11 @@ public class StudentDaoImpl implements StudentDao {
 		String jpql="select c from Course c where c.courseID= :courseId";
 		List<Notice> li = null;
 		Session hs = sf.getCurrentSession();
-		Transaction tx = hs.beginTransaction();
 		try {
-			Course c = hs.createQuery(jpql, Course.class).getSingleResult();
+			Course c = hs.createQuery(jpql, Course.class).setParameter("courseId", courseId).getSingleResult();
 			li=c.getNotices();
-			tx.commit();
+			for(Notice n : li);
 		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
 			throw e;
 		}
 		return li;
@@ -52,14 +57,11 @@ public class StudentDaoImpl implements StudentDao {
 		String jpql="select c from Course c where c.courseID= :courseId";
 		List<Schedule> li = null;
 		Session hs = sf.getCurrentSession();
-		Transaction tx = hs.beginTransaction();
 		try {
-			Course c = hs.createQuery(jpql, Course.class).getSingleResult();
+			Course c = hs.createQuery(jpql, Course.class).setParameter("courseId", courseId).getSingleResult();
 			li=c.getSchedules();
-			tx.commit();
+			for(Schedule s : li);
 		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
 			throw e;
 		}
 		return li;
@@ -68,21 +70,24 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public Student getDetails(Integer studId) {
 		String jpql="select s from Student s where s.id = :studId";
-		return sf.getCurrentSession().createQuery(jpql, Student.class).setParameter("studId", studId).getSingleResult();
+		Session hs = sf.getCurrentSession();
+		Student s;
+		try {
+		s= hs.createQuery(jpql, Student.class).setParameter("studId", studId).getSingleResult();
+		} catch (HibernateException e) {
+			throw e;
+		}
+		return s;
 	}
 
 	@Override
 	public String updatePassword(Integer studId,String pwd) {
 		String jpql="select s from Student s where s.id = :studId";
 		Session hs = sf.getCurrentSession();
-		Transaction tx = hs.beginTransaction();
 		try {
-			Student s = hs.createQuery(jpql, Student.class).getSingleResult();
+			Student s = hs.createQuery(jpql, Student.class).setParameter("studId", studId).getSingleResult();
 			s.setPassword(pwd);
-			tx.commit();
 		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
 			throw e;
 		}
 		return "Password changed successfully";
@@ -93,14 +98,11 @@ public class StudentDaoImpl implements StudentDao {
 		String jpql="select s from Student s where s.id = :studId";
 		List<Marks> li = null;
 		Session hs = sf.getCurrentSession();
-		Transaction tx = hs.beginTransaction();
 		try {
-			Student s = hs.createQuery(jpql, Student.class).getSingleResult();
+			Student s = hs.createQuery(jpql, Student.class).setParameter("studId", studId).getSingleResult();
 			li=s.getMarks();
-			tx.commit();
+			for(Marks m : li);
 		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
 			throw e;
 		}
 		return li;
@@ -111,14 +113,11 @@ public class StudentDaoImpl implements StudentDao {
 		String jpql="select s from Student s where s.id = :studId";
 		List<Attendance> li = null;
 		Session hs = sf.getCurrentSession();
-		Transaction tx = hs.beginTransaction();
 		try {
-			Student s = hs.createQuery(jpql, Student.class).getSingleResult();
+			Student s = hs.createQuery(jpql, Student.class).setParameter("studId", studId).getSingleResult();
 			li=s.getAttendance();
-			tx.commit();
+			for(Attendance a : li);
 		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
 			throw e;
 		}
 		return li;
