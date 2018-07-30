@@ -9,6 +9,7 @@
 </head>
 <body>
 <p class="h1">WELCOME TO ISP  <small class="text-muted">This is the welcome page</small></p>
+<a href="student/login">Login</a>
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
