@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ISP</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<!-- "<c:url value="/resources/color/default.css" />" -->
+
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800" rel="stylesheet" media="screen">
 
   <!--  <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" media="screen"> -->
@@ -29,7 +29,7 @@
         </button>
 
         <!-- Logo text or image -->
-        <a class="navbar-brand" href="index.html">Portal</a>
+        <a class="navbar-brand" href="#">Portal</a>
 
       </div>
       <div class="navigation collapse navbar-collapse navbar-ex1-collapse">
@@ -54,7 +54,7 @@
             <div class="line-spacer"></div>
             <h3 style="color:white;">Portal to Information</h3>
             <div class="btn btn-default">
-            <a href="login.html" class="btn btn-default">Login</a>
+            <a href="student/login" class="btn btn-default">Login</a>
             </div>
           </div>
         </div>

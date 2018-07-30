@@ -1,17 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 <head>
   <title>Institute Student Portal</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- css -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800" rel="stylesheet" media="screen">
-
-  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-  <link href="css/style.css" rel="stylesheet" media="screen">
-  <link href="color/default.css" rel="stylesheet" media="screen">
+  
+	<link rel="icon" type="image/png" href="<c:url value="/resources/img/icons/favicon.ico"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/fonts/font-awesome.min.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/animate.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/hamburgers.min.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/select2/select2.min.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/util.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 
 </head>
 
@@ -21,10 +26,10 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="img/cdac_logo.jpg" alt="IMG" align="center">
+					<img src="<c:url value="/resources/img/cdac_logo.jpg"/>" alt="IMG" align="center">
 				</div>
 
-				<form class="login100-form validate-form" >
+				<form class="login100-form validate-form" action="profile" method="post" >
 					<span class="login100-form-title">
 						Student Login
 					</span>
@@ -64,25 +69,8 @@
 		</div>
 	</div>
 	
-	
 
-	
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+
 
 </body>
 </html>

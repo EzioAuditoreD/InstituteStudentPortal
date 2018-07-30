@@ -9,7 +9,7 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.isp"/>
 	<mvc:annotation-driven/>
-	 <mvc:default-servlet-handler/>
+	<!-- <mvc:default-servlet-handler/> -->
 	<!-- configure view resolver bean for auto transalation -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 	p:prefix="/WEB-INF/views/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView"
