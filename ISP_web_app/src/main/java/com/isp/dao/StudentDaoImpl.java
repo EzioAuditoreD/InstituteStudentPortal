@@ -22,6 +22,7 @@ import com.isp.utils.IspUtils;
 
 @Repository
 @Transactional
+@SuppressWarnings("unused")
 public class StudentDaoImpl implements StudentDao {
 
 	@Autowired

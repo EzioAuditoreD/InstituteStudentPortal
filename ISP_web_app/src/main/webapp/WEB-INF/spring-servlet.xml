@@ -13,6 +13,7 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 	p:prefix="/WEB-INF/views/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView"
 	/>
+	<mvc:resources mapping="/webjars/**" location="/webjars/"/>
 	<!-- import hibernate config xml file -->
 	<import resource="classpath:/hibernate-persistence.xml"/>
 </beans>
