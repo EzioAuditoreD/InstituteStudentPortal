@@ -5,18 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 @Table(name="Students")
@@ -24,6 +13,8 @@ public class Student {
 
 	private Integer id;
 	private String name;
+	private String username;
+	private String password;
 	private String Address;
 	private String contactNo;
 	private char gender;
@@ -34,6 +25,7 @@ public class Student {
 	private byte[] photo;
 	private String qualification;
 	private boolean verified;
+	private boolean active;
 	
 	private Course courseID;
 	private List<Marks> marks = new ArrayList<>();
@@ -52,30 +44,35 @@ public class Student {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@Column(nullable=false)
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Column(nullable=false)
 	public String getAddress() {
 		return Address;
 	}
 	public void setAddress(String address) {
 		Address = address;
 	}
+	@Column(unique=true, nullable=false)
 	public String getContactNo() {
 		return contactNo;
 	}
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
 	}
+	@Column(nullable=false)
 	public char getGender() {
 		return gender;
 	}
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
+	@Column(nullable=false)
 	public int getBatch() {
 		return batch;
 	}
@@ -90,6 +87,7 @@ public class Student {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+	@Column(nullable=false)
 	public String getFathersName() {
 		return fathersName;
 	}
@@ -117,9 +115,28 @@ public class Student {
 	public boolean isVerified() {
 		return verified;
 	}
-
 	public void setVerified(boolean verified) {
 		this.verified = verified;
+	}
+	@Column(unique=true, nullable=false)
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	@Column(nullable=false)
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@ManyToOne
