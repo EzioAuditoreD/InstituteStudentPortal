@@ -14,6 +14,7 @@
 	p:prefix="/WEB-INF/views/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView"
 	/>
 	<mvc:resources mapping="/webjars/**" location="/webjars/"/>
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
 	<!-- import hibernate config xml file -->
 	<import resource="classpath:/hibernate-persistence.xml"/>
 </beans>
