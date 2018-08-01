@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> 
 <html>
 <head><!-- "<c:url value="/resources/img/cdac_logo.jpg" />" -->
@@ -8,15 +9,30 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script>
+		$(document).ready(function(){
+	    	$(".b").click(function(){
+				$("#1").html("<embed src='"+$(this).val()+"' type='application/pdf' align='right' height='600px' width='1000px' class='responsive'>");
+	    	});
+	    });
+	</script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {border:none;}
+    
+    
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
     
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
+    .list-group{
+    max-height: 100vh;
+	max-width: 300px;
+    margin-bottom: 10px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+	}
     
     /* Set gray background color and 100% height */
     .sidenav {
@@ -28,8 +44,12 @@
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
+      position: fixed;
+      bottom: 0px;
       color: white;
       padding: 15px;
+       margin-bottom: 0px;
+       width:100vw;
     }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -41,7 +61,7 @@
       .row.content {height:auto;} 
     }
   </style>
-<title>Insert title here</title>
+<title>Profile</title>
 </head>	
 <!--  <c:url value="/resources/img/acts.jpeg"/>-->
 <body>
@@ -64,7 +84,7 @@
         <li><a href="marks">Marks</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-out"> </span> Logout</a></li>
+        <li><a href="logout"><span class="glyphicon glyphicon-log-out"> </span> Logout</a></li>
       </ul>
     </div>
   </div>
@@ -72,15 +92,32 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-    </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
+      <h1>Schedule</h1>
            <hr>
-    </div>
+    </div>  
   </div>
+  <br>
+  <!-- ======================================================================================================================================================== -->
+	<div class="panel panel-primary" id="result_panel">
+			<div class="panel-heading"><h3 class="panel-title">Result List</h3>
+			</div>
+			<div class="panel-body col-sm-4">
+				<ul class="list-group">
+					<!--  For each loop to get list of paths of notices  -->
+					 <c:forEach var="s" items="${requestScope.schedules}" varStatus="status">
+							<li class="list-group-item">
+								WEEK Number - ${s.weekNo}
+								<button class="b" value="<c:url value="/resources/schedules/${s.data}" />">View PDF</button>
+							</li>
+					 </c:forEach>	
+				</ul>
+			</div>
+			<div id="1" class="panel-body col-sm-8"></div>
+		</div>
+  <!-- ======================================================================================================================================================== -->
 </div>
-
+ 
 <footer class="container-fluid text-center">
  <div class="container">
       <div class="row">

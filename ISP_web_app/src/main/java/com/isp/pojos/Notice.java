@@ -19,7 +19,7 @@ public class Notice {
 
 	private Integer noticeID;
 	private String title;
-	private byte[] data;
+	private String data;
 	private Date createdOn;
 	private Date updatedOn;
 	private Course courseID;
@@ -65,11 +65,11 @@ public class Notice {
 		this.updatedOn = updatedOn;
 	}
 
-	public byte[] getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(byte[] data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
@@ -85,7 +85,7 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [title=" + title + ", createdOn=" + createdOn + ", data=" + data + ", courseID=" + courseID
+		return "Notice [title=" + title + ", createdOn=" + createdOn + ", courseID=" + courseID
 				+ "]";
 	}
 	

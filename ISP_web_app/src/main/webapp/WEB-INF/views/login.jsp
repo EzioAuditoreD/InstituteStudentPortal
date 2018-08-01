@@ -55,21 +55,13 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="text-danger center-block" >hello ${requestScope.loginMessage}</div>
+					<div class="text-danger center-block" >${requestScope.loginMessage}</div>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Login
 						</button>
 					</div>
 
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div>
 				</form>
 			</div>
 		</div>

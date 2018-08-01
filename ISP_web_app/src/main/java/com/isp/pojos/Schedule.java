@@ -19,7 +19,7 @@ public class Schedule {
 
 	private Integer scheduleID;
 	private int weekNo;
-	private byte[] data;
+	private String data;
 	private Date createdOn;
 	private Date updatedOn;
 	
@@ -48,11 +48,11 @@ public class Schedule {
 		this.weekNo = weekNo;
 	}
 
-	public byte[] getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(byte[] data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	@Temporal(TemporalType.DATE)
@@ -86,6 +86,6 @@ public class Schedule {
 
 	@Override
 	public String toString() {
-		return "Schedule [courseID=" + courseID + ", weekNo=" + weekNo + ", data=" + data + "]";
+		return "Schedule [courseID=" + courseID + ", weekNo=" + weekNo + "]";
 	}
 }

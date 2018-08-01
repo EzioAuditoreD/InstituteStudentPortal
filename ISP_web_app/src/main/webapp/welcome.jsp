@@ -35,7 +35,7 @@
       <div class="navigation collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
           <li class="current"><a href="#intro">Home</a></li>
-          <li><a href="#services">Service</a></li>
+          <li><a href="#services">Technologies</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#team">Team</a></li>
         </ul>
@@ -216,7 +216,7 @@
         </div>
         <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" data-wow-delay="0.7s">
           <div class="box-team wow bounceInUp">
-            <img src="<c:url value="/resources/img/team/negi.jpg" />" alt="" class="img-circle img-responsive" />
+            <img src="<c:url value="/resources/img/team/negi.jpeg" />" alt="" class="img-circle img-responsive" />
             <h4>Abhishek Negi</h4>
           </div>
         </div>

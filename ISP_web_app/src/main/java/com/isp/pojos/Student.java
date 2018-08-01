@@ -23,7 +23,7 @@ public class Student {
 	private Date dob;
 	private String fathersName;
 	private String fathersContact;
-	private byte[] photo;
+	private String photo;
 	private String qualification;
 	private boolean verified;
 	private boolean active;
@@ -101,10 +101,10 @@ public class Student {
 	public void setFathersContact(String fathersContact) {
 		this.fathersContact = fathersContact;
 	}
-	public byte[] getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 	@Column(nullable=false)
@@ -173,7 +173,7 @@ public class Student {
 	public String toString() {
 		return "Student [name=" + name + ", Address=" + Address + ", contactNo=" + contactNo + ", gender=" + gender
 				+ ", batch=" + batch + ", courseID=" + courseID + ", dob=" + dob + ", fathersName=" + fathersName
-				+ ", fathersContact=" + fathersContact + ", photo=" + Arrays.toString(photo) + ", qualification="
+				+ ", fathersContact=" + fathersContact + ", photo="  + ", qualification="
 				+ qualification + "]";
 	}
 
