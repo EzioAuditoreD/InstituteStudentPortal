@@ -19,7 +19,6 @@ public class StudentServiceImpl implements StudentService {
 	private StudentDao dao;
 	@Override
 	public Student validateStudent(String em, String pass) {
-		//return dao.validateStudent(em, IspUtils.passwordEncoder().encode(pass));
 		return dao.validateStudent(em, pass);
 	}
 

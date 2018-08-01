@@ -3,6 +3,8 @@ package com.isp.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,9 +18,11 @@ import com.isp.pojos.Marks;
 import com.isp.pojos.Notice;
 import com.isp.pojos.Schedule;
 import com.isp.pojos.Student;
+import com.isp.utils.IspUtils;
 
 @Repository
 @Transactional
+@SuppressWarnings("unused")
 public class StudentDaoImpl implements StudentDao {
 
 	@Autowired
@@ -26,15 +30,20 @@ public class StudentDaoImpl implements StudentDao {
 	
 	@Override
 	public Student validateStudent(String usn, String pwd) {
-		String jpql="select s from Student s where s.username= :username and s.password = :password";
+		String jpql="select s from Student s where s.username= :username and s.active = TRUE";
 		Session hs = sf.getCurrentSession();
 		Student s;
 		try {
-			s = hs.createQuery(jpql, Student.class).setParameter("username", usn).setParameter("password", pwd).getSingleResult();
+			s = hs.createQuery(jpql, Student.class).setParameter("username", usn).getSingleResult();
+			if(!IspUtils.passwordEncoder().matches(pwd, s.getPassword()))
+			{
+				throw new NoResultException();
+			}
 		} catch (HibernateException e) {
 			throw e;
 		}
 		return s;
+
 	}
 
 	@Override

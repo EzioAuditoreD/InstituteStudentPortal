@@ -34,6 +34,7 @@ public class StudentController {
 	@GetMapping("/login")
 	public String showLogin()
 	{
+		System.out.println("login page");
 		return "/login";
 	}
 	
@@ -48,12 +49,12 @@ public class StudentController {
 			s = service.validateStudent(username,password);
 			hs.setAttribute("studentID", s.getId());
 			hs.setAttribute("studentCourseID", s.getCourseID().getCourseID());
-			return "redirect:/profile";
+			return "redirect:/student/profile";
 		}
 		catch(RuntimeException e)
 		{
 			map.addAttribute("loginMessage", "Invalid Username or Password");
-			return "/student/login";
+			return "/login";
 		}
 	}
 	
@@ -62,7 +63,7 @@ public class StudentController {
 	{
 		Student s = service.getStudentDetails((Integer)hs.getAttribute("studentID"));
 		map.addAttribute("studentDetails",s);
-		return "/student/profile";
+		return "/profile";
 	}
 	
 	@GetMapping("/notices")
@@ -72,7 +73,7 @@ public class StudentController {
 		Integer courseID = (Integer)hs.getAttribute("studentCourseID");
 		List<Notice> notices = service.getNotices(courseID);
 		map.addAttribute("notices",notices);
-		return "/student/notices";
+		return "/notices";
 	}
 	
 	@GetMapping("/schedules")
@@ -81,7 +82,7 @@ public class StudentController {
 		Integer courseID = (Integer)hs.getAttribute("studentCourseID");
 		List<Schedule> schedules = service.getSchedules(courseID);
 		map.addAttribute("schedules",schedules);
-		return "/student/schedules";
+		return "/schedules";
 	}
 	
 	@GetMapping("/marks")
@@ -90,7 +91,7 @@ public class StudentController {
 		Integer studentID = (Integer)hs.getAttribute("studentID");
 		List<Marks> marks =service.getMarks(studentID);
 		map.addAttribute("marks",marks);
-		return "/student/marks";
+		return "/marks";
 	}
 	
 	@GetMapping("/attendance")
@@ -99,13 +100,13 @@ public class StudentController {
 		Integer studentID = (Integer)hs.getAttribute("studentID");
 		List<Attendance> attendances =service.getAttendance(studentID);
 		map.addAttribute("attendances",attendances);
-		return "/student/attendance";
+		return "/attendance";
 	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession hs)
 	{
 		hs.invalidate();
-		return "/student/welcome";
+		return "/welcome";
 	}
 }

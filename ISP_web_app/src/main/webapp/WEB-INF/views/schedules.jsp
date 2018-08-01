@@ -75,25 +75,10 @@
     <div class="col-sm-2 sidenav">
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome <span style="color:green;">${requestScope.studentDetails.name}</span></h1>
+      <h1>Welcome</h1>
            <hr>
-    </div>  
+    </div>
   </div>
-  <br>
-  <div class="table-responsive">          
-  <table class="table">
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Anna</td>
-        <td>Pitt</td>
-        <td>35</td>
-        <td>New York</td>
-        <td>USA</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 </div>
 
 <footer class="container-fluid text-center">

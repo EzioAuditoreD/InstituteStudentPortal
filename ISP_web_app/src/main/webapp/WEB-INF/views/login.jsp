@@ -17,25 +17,31 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/select2/select2.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/util.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
+	<style type="text/css">
+	body {
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	</style>
 
 </head>
 
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100" style="background-color:rgb(0,85,125);">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="<c:url value="/resources/img/cdac_logo.jpg"/>" alt="IMG" align="center">
 				</div>
 
-				<form class="login100-form validate-form" action="profile" method="post" >
+				<form class="login100-form validate-form" action="login" method="post" >
 					<span class="login100-form-title">
 						Student Login
+						
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+						<input class="input100" type="text" name="username" placeholder="UserName">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -43,13 +49,13 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-					
+					<div class="text-danger center-block" >hello ${requestScope.loginMessage}</div>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Login
