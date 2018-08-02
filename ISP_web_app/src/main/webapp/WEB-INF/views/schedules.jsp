@@ -6,13 +6,19 @@
 <head><!-- "<c:url value="/resources/img/cdac_logo.jpg" />" -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> 
+  <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>  	 -->
+ <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
+  <link href="<c:url value="/resources/bootstrap-3.3.7/dist/css/bootstrap.min.css" />" rel="stylesheet">
+  <script src="<c:url value="/resources/jquery-3.3.1/jquery-3.3.1.min.js" />"></script>
+  <script src="<c:url value="/resources/bootstrap-3.3.7/dist/js/bootstrap.min.js" />"></script>
   	<script>
 		$(document).ready(function(){
 	    	$(".b").click(function(){
-				$("#1").html("<embed src='"+$(this).val()+"' type='application/pdf' align='right' height='600px' width='1000px' class='responsive'>");
+				$("#1").html("<embed src='"+$(this).val()+"' type='application/pdf' align='right' height='600px' width='100%' class='responsive'>");
 	    	});
 	    });
 	</script>
@@ -28,7 +34,6 @@
     
     .list-group{
     max-height: 100vh;
-	max-width: 300px;
     margin-bottom: 10px;
     overflow-y:auto;
     -webkit-overflow-scrolling: touch;
@@ -43,8 +48,8 @@
     
     /* Set black background color, white text and some padding */
     footer {
-      background-color: #555;
-      position: fixed;
+     background-color: #555;
+      position: static;
       bottom: 0px;
       color: white;
       padding: 15px;
@@ -59,13 +64,31 @@
         padding: 15px;
       }
       .row.content {height:auto;} 
+      #pageHeading{
+      text-align:center;
+      }
     }
+    
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+}
   </style>
-<title>Profile</title>
+<title>Schedules</title>
 </head>	
 <!--  <c:url value="/resources/img/acts.jpeg"/>-->
 <body>
-<nav class="navbar navbar-inverse">
+<div class="content">
+<nav class="navbar navbar-inverse" style="background-color:black;padding-top:5px;padding-bottom:5px;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -73,18 +96,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-     <img src="<c:url value="/resources/img/acts.jpeg"/>" style="width:60px;height:50px">
+     <img src="<c:url value="/resources/img/acts.jpeg"/>" style="width:75px;height:50px">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-      	<li><a href="profile">Profile</a></li>
-        <li><a href="notices">Notice</a></li>
-        <li><a href="schedules">Schedule</a></li>
-        <li><a href="attendance">Attendance</a></li>
-        <li><a href="marks">Marks</a></li>
+      	<li><a href="profile"><strong>Profile</strong></a></li>
+        <li><a href="notices"><strong>Notice</strong></a></li>
+        <li><a href="schedules"><strong>Schedule</strong></a></li>
+        <li><a href="attendance"><strong>Attendance</strong></a></li>
+        <li><a href="marks"><strong>Marks</strong></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout"><span class="glyphicon glyphicon-log-out"> </span> Logout</a></li>
+         <li><a href="logout"><span class="glyphicon glyphicon-log-out"> </span> <strong>Logout</strong></a></li>
       </ul>
     </div>
   </div>
@@ -93,16 +116,14 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-8 text-left"> 
-      <h1>Schedule</h1>
+      <h1 id="pageHeading">Schedule</h1>
            <hr>
     </div>  
   </div>
   <br>
   <!-- ======================================================================================================================================================== -->
-	<div class="panel panel-primary" id="result_panel">
-			<div class="panel-heading"><h3 class="panel-title">Result List</h3>
-			</div>
-			<div class="panel-body col-sm-4">
+	<div id="result_panel">
+			<div class="panel-body col-sm-4 col-xs-12 responsive">
 				<ul class="list-group">
 					<!--  For each loop to get list of paths of notices  -->
 					 <c:forEach var="s" items="${requestScope.schedules}" varStatus="status">
@@ -113,12 +134,12 @@
 					 </c:forEach>	
 				</ul>
 			</div>
-			<div id="1" class="panel-body col-sm-8"></div>
+			<div id="1" class="panel-body col-sm-8 col-xs-12"></div>
 		</div>
   <!-- ======================================================================================================================================================== -->
 </div>
- 
-<footer class="container-fluid text-center">
+</div>
+<footer class="container-fluid text-center footer">
  <div class="container">
       <div class="row">
         <div class="col-md-12">

@@ -4,7 +4,7 @@
 <html>
 
 <head>
-  <title>Institute Student Portal</title>
+  <title>Login</title>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- css -->
@@ -29,8 +29,8 @@
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-color:rgb(0,85,125);">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
+			<div class="wrap-login100" style="padding-top: 100px; padding-bottom: 100px;">
+				<div class="login100-pic js-tilt" data-tilt style="padding-top: 65px;">
 					<img src="<c:url value="/resources/img/cdac_logo.jpg"/>" alt="IMG" align="center">
 				</div>
 
@@ -66,9 +66,6 @@
 			</div>
 		</div>
 	</div>
-	
-
-
 
 </body>
 </html>

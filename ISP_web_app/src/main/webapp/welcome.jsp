@@ -6,13 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ISP</title>
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800" rel="stylesheet" media="screen">
 
   <!--  <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" media="screen"> -->
   <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" media="screen">
   <link href="<c:url value="/resources/color/default.css" />" rel="stylesheet" media="screen">
+  <style type="text/css">
+  .btn{
+  padding:15px 40px;
+  font-size:20px;
+  border:4px solid transparent;
+  }
+  .btn-default {
+  color:white;
+  background-color:transparent;
+  border-color:white;
+  }
+  </style>
 </head>
 
 <body>
@@ -52,9 +64,9 @@
             <h1>Institute Student Portal</h1>
             <div class="line-spacer"></div>
             <h3 style="color:white;">Portal to Information</h3>
-            <div class="btn btn-default">
+         
             <a href="student/login" class="btn btn-default">Login</a>
-            </div>
+ 	
           </div>
         </div>
       </div>
@@ -296,8 +308,8 @@
   <!-- js -->
   <!-- "<c:url value="/resources/styles/bootstrap.min.css" />" -->
   
-  <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-  <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+  <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="<c:url value="/resources/js/jquery.js" />"></script>
   <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
   <script src="<c:url value="/resources/js/wow.min.js" />"></script>
