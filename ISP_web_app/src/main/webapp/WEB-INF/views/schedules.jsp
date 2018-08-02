@@ -18,7 +18,14 @@
   	<script>
 		$(document).ready(function(){
 	    	$(".b").click(function(){
-				$("#1").html("<embed src='"+$(this).val()+"' type='application/pdf' align='right' height='600px' width='100%' class='responsive'>");
+	    		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	    			var link = document.createElement('a');
+	    			link.href = $(this).val();
+	    			link.dispatchEvent(new MouseEvent('click'));
+					}
+	    		else{
+	    			$("#1").html("<embed src='"+$(this).val()+"' type='application/pdf' align='right' height='600px' width='100%' class='responsive'>");
+	    		}
 	    	});
 	    });
 	</script>
